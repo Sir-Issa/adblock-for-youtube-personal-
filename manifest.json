@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Smart YouTube Ad Blocker",
+  "version": "2.0",
+  "description": "Advanced personal YouTube ad blocker with learning.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "*://*.googlevideo.com/*",
+    "*://*.doubleclick.net/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["utils.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "Smart YouTube Ad Blocker"
+  }
+}
